@@ -6,16 +6,15 @@ class Phrase
   end
 
   def word_count
-    words = @phrase.scan(/(?!'.*')\b[\w']+\b/)
-    frequencies = Hash.new(0)
-    words.each do |word|
+    words.each_with_object({}) do |word, hash|
       word.downcase!
-      if frequencies[word]
-        frequencies[word] += 1
-      else
-        frequencies[word] = 1
-      end
+      hash.default = 0
+      hash[word] += 1
     end
-    frequencies
   end
+
+  def words
+    phrase.scan(/\b[\w']+\b/)
+  end
+
 end
