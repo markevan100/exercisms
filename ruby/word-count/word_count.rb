@@ -10,8 +10,9 @@ class Phrase
 
   private
   attr_reader :phrase
-  
+
   def words
-    phrase.downcase.scan(/\b[\w']+\b/)
+    separate_words = /\b[\w']+\b/
+    phrase.downcase.scan(separate_words)
   end
 end
