@@ -1,4 +1,5 @@
 class Phrase
+  WORD_REGEX = /\b[\w']+\b/
 
   def initialize(phrase)
     @phrase = phrase
@@ -12,7 +13,6 @@ class Phrase
   attr_reader :phrase
 
   def words
-    separate_words = /\b[\w']+\b/
-    phrase.downcase.scan(separate_words)
+    phrase.downcase.scan(WORD_REGEX)
   end
 end
